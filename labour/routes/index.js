@@ -5,7 +5,6 @@ const Worker = require("../models/Worker");
 const Booking = require("../models/Booking");
 const Contact = require("../models/Contact");
 
-
 /* GET home page. */
 router.get("/", async (req, res, next) => {
   try {
@@ -18,7 +17,7 @@ router.get("/", async (req, res, next) => {
 
 /* GET admin page. */
 router.get("/admin", (req, res) => {
-  res.render("admin",{ title: "Admin Page" });
+  res.render("admin", { title: "Admin Page" });
 });
 
 /* POST admin page to handle form submission */
@@ -35,7 +34,7 @@ router.post("/admin", async (req, res) => {
 });
 /* GET booking page */
 router.get("/booking", (req, res) => {
-  res.render("booking",{ title: "Booking Page" });
+  res.render("booking", { title: "Booking Page" });
 });
 
 /* GET contact page */
@@ -57,7 +56,7 @@ router.post("/booking", async (req, res) => {
       requiredWork,
     });
     await booking.save();
-    res.redirect("/");
+    res.redirect("/?success=true");
   } catch (err) {
     res.status(500).send("Error saving booking");
   }
@@ -75,7 +74,6 @@ router.post("/contact", async (req, res) => {
   }
 });
 
+
+
 module.exports = router;
-
-
-
